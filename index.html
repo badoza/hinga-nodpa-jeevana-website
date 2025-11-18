@@ -84,7 +84,7 @@
         
         /*
         ========================================
-        NEW: POSTER SECTION STYLES
+        POSTER SECTION STYLES
         ========================================
         */
         .poster-section {
@@ -164,9 +164,22 @@
             background: var(--color-black); /* Solid black background */
             padding-top: 60px;
         }
+        
+        /* UPDATED: Director Style */
+        .hero-content .director {
+            font-family: var(--font-secondary);
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            margin-top: 30px; /* Increased margin to separate from the tagline box */
+            padding: 10px 0; /* Vertical padding for framing effect */
+            display: block;
+            text-transform: uppercase;
+            color: var(--color-gray-light); /* Slightly muted color for a true film credit look */
+        }
+
 
         .hero-poster {
-            /* This div is now empty for the background image,
+            /* This div is now an empty background layer, 
                allowing the hero section to be solid black. */
             width: 100%;
             height: 100%;
@@ -338,6 +351,9 @@
             .hero p {
                 font-size: 1em;
             }
+            .hero-content .director {
+                font-size: 1em;
+            }
             .section-heading {
                 font-size: 2em;
                 margin-bottom: var(--spacing-medium);
@@ -372,13 +388,13 @@
 
     <!-- Step 4: Hero Section (The Title Page) -->
     <section class="hero">
-        <!-- NOTE: hero-poster div is now an empty background layer, 
-                   allowing the hero section to be solid black. -->
         <div class="hero-poster"></div>
         <div class="hero-content">
             <h1>"ಹಿಂಗ್ಸ್ ನೋಡಪ್ಪ ಜೀವನ"</h1>
             <h1>HINGA NODPA JEEVANA</h1>
             <p>ಕನ್ನಡ Black & White ಚಿತ್ರ - ಬಹು ವರ್ಷಗಳ ನಂತರ!</p>
+            <!-- UPDATED: Cinematic Director Credit -->
+            <p class="director">A FILM BY HRISHIKESH SANGALIKAR | ಚಿತ್ರ ನಿರ್ದೇಶನ: ಹೃಷಿಕೇಶ್ ಸಾಂಗ್ಲಿಕರ್</p>
         </div>
     </section>
     
