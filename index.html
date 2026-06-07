@@ -8,7 +8,6 @@
     <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Playfair Display for Cinematic Headings, Montserrat for clean, modern interface text -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
     <style>
@@ -22,7 +21,7 @@
             --bg-light: #ffffff;
             --text-light: #f4f4f4;
             --text-dark: #111111;
-            --accent-color: #8c8c8c; /* Subtle silver/grey for cinematic feel */
+            --accent-color: #8c8c8c;
             
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
@@ -64,7 +63,36 @@
 
         /* 
         ========================================
-        NAVIGATION (Amblin-inspired transparent-to-solid)
+        ANIMATIONS (Minimalist & Cinematic)
+        ========================================
+        */
+        /* Element Reveal on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay modifiers for staggered grid loading */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Slow infinite zoom for the Hero background */
+        @keyframes cinematicZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* 
+        ========================================
+        NAVIGATION (Sticky with Scroll Effect)
         ========================================
         */
         header {
@@ -73,8 +101,13 @@
             width: 100%;
             padding: 30px 0;
             z-index: 1000;
-            transition: var(--transition-smooth);
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(5, 5, 5, 0.85);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
         }
 
         .nav-inner {
@@ -110,7 +143,7 @@
 
         /* 
         ========================================
-        HERO SECTION (The Studio Intro)
+        HERO SECTION
         ========================================
         */
         .hero {
@@ -120,20 +153,28 @@
             justify-content: center;
             position: relative;
             text-align: center;
-            /* Placeholder for a studio showreel or grand background */
+            overflow: hidden; /* Contains the zoom animation */
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: -5%; /* Prevent white borders during zoom */
             background: url('https://images.unsplash.com/photo-1485005934571-70cb8ebf7678?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            animation: cinematicZoom 25s infinite alternate ease-in-out;
+            z-index: 1;
         }
 
         .hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             max-width: 800px;
             padding: 0 20px;
         }
@@ -155,7 +196,7 @@
 
         /* 
         ========================================
-        FEATURED RELEASE (Spotlight on HNJ)
+        FEATURED RELEASE
         ========================================
         */
         .featured-release {
@@ -186,11 +227,17 @@
         .featured-poster {
             position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+            overflow: hidden;
         }
 
         .featured-poster img {
             width: 100%;
-            border: 1px solid #333;
+            transition: transform 0.8s ease;
+        }
+
+        .featured-poster:hover img {
+            transform: scale(1.03);
         }
 
         .featured-info h3 {
@@ -262,7 +309,7 @@
 
         /* 
         ========================================
-        FILMOGRAPHY GRID (All Projects)
+        FILMOGRAPHY GRID
         ========================================
         */
         .filmography {
@@ -279,7 +326,6 @@
         .film-card {
             position: relative;
             overflow: hidden;
-            group: film-card;
             cursor: pointer;
         }
 
@@ -287,7 +333,7 @@
             width: 100%;
             aspect-ratio: 2/3;
             object-fit: cover;
-            transition: transform 0.7s ease;
+            transition: transform 0.7s ease, filter 0.7s ease;
             filter: grayscale(80%) contrast(120%);
         }
 
@@ -367,7 +413,7 @@
             margin-bottom: 10px;
         }
 
-        /* BADOZA. AD AGENCY EXCLUSIVE CREDIT STYLING */
+        /* THE BADOZA CREDIT */
         .agency-credit {
             margin-top: 30px;
             font-size: 0.75rem;
@@ -380,9 +426,34 @@
             gap: 10px;
         }
         
-        .agency-credit span {
-            color: #999;
+        .agency-credit a {
+            color: #b3b3b3;
             font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .agency-credit a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #b3b3b3;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .agency-credit a:hover {
+            color: #fff;
+        }
+
+        .agency-credit a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+            background-color: #fff;
         }
 
         /* 
@@ -409,7 +480,7 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* In a real build, add a hamburger menu here */
+                display: none; 
             }
             .hero-title {
                 font-size: 2.5rem;
@@ -426,7 +497,7 @@
 <body>
 
     <!-- Header Navigation -->
-    <header>
+    <header id="navbar">
         <div class="container nav-inner">
             <a href="#" class="studio-logo">Agnilochana Films</a>
             <nav class="nav-links">
@@ -440,7 +511,8 @@
 
     <!-- Studio Hero Banner -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal active"> <!-- Active by default to fade in on load -->
             <div class="hero-subtitle">Independent Cinema from Belagavi</div>
             <h1 class="hero-title">Crafting Authentic Stories. Rooted in Culture.</h1>
         </div>
@@ -449,19 +521,18 @@
     <!-- Featured / Latest Project (Hinga Nodpa Jeevana) -->
     <section id="featured" class="featured-release">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>Now in Post-Production</h2>
             </div>
             
             <div class="featured-grid">
                 <!-- Poster -->
-                <div class="featured-poster">
-                    <!-- IMPORTANT: Ensure HNJ.jpg is in the same folder -->
+                <div class="featured-poster reveal">
                     <img src="HNJ.jpg" alt="Hinga Nodpa Jeevana Poster" loading="lazy">
                 </div>
 
                 <!-- Film Details -->
-                <div class="featured-info">
+                <div class="featured-info reveal delay-1">
                     <h2 class="kannada-title">ಹಿಂಗ್ಸ್ ನೋಡಪ್ಪ ಜೀವನ</h2>
                     <h3>Hinga Nodpa Jeevana</h3>
                     <div class="director-credit">Directed by Hrishikesh Sangalikar</div>
@@ -482,13 +553,13 @@
     <!-- Filmography Portfolio Grid -->
     <section id="films" class="filmography">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>Our Films</h2>
             </div>
             
             <div class="film-grid">
                 <!-- Film Card 1 -->
-                <div class="film-card">
+                <div class="film-card reveal delay-1">
                     <img src="HNJ.jpg" alt="Hinga Nodpa Jeevana">
                     <div class="film-card-overlay">
                         <h4>Hinga Nodpa Jeevana</h4>
@@ -496,9 +567,8 @@
                     </div>
                 </div>
 
-                <!-- Film Card Placeholder 2 (Upcoming) -->
-                <div class="film-card">
-                    <!-- Placeholder image - replace src when new film is announced -->
+                <!-- Film Card Placeholder 2 -->
+                <div class="film-card reveal delay-2">
                     <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=800&auto=format&fit=crop" alt="Upcoming Project">
                     <div class="film-card-overlay">
                         <h4>Untitled Project</h4>
@@ -506,8 +576,8 @@
                     </div>
                 </div>
 
-                <!-- Film Card Placeholder 3 (Upcoming) -->
-                <div class="film-card">
+                <!-- Film Card Placeholder 3 -->
+                <div class="film-card reveal delay-3">
                     <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop" alt="Upcoming Project">
                     <div class="film-card-overlay">
                         <h4>Untitled Project</h4>
@@ -519,7 +589,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer id="contact" class="reveal">
         <div class="container">
             <div class="footer-logo">Agnilochana Films</div>
             
@@ -533,12 +603,49 @@
                 &copy; 2026 Agnilochana Productions. All Rights Reserved.
             </div>
 
-            <!-- Enhanced Agency Credit -->
+            <!-- BADOZA CREDIT REDIRECT -->
             <div class="agency-credit">
-                Digital Architecture & Branding by <span>BADOZA Ad Agency</span>
+                Digital Experience by <a href="https://badoza.store" target="_blank">Badoza</a>
             </div>
         </div>
     </footer>
 
+    <!-- INTERSECTION OBSERVER SCRIPT FOR ANIMATIONS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Scroll-Triggered Reveal Animation
+            const reveals = document.querySelectorAll(".reveal");
+            const revealOptions = {
+                threshold: 0.15, // Triggers when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+
+            // 2. Sticky Header Scroll Effect
+            const header = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 100) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.add("scrolled");
+                    header.classList.remove("scrolled");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
