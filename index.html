@@ -93,7 +93,7 @@
             padding: 30px 0;
             z-index: 1000;
             transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
-            background: rgba(15, 10, 6, 0.95); /* Deep brown transparent */
+            background: rgba(15, 10, 6, 0.95); 
             backdrop-filter: blur(10px);
         }
 
@@ -115,7 +115,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--accent-color); /* Applied golden bronze to text logo */
+            color: var(--accent-color); 
         }
 
         .nav-links {
@@ -170,6 +170,8 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             border: 1px solid var(--border-color);
             overflow: hidden;
+            max-width: 420px; /* Constrains height on laptop screens */
+            margin: 0 auto; /* Centers it perfectly */
         }
 
         .featured-poster img {
@@ -312,7 +314,7 @@
 
         .interview-card:hover .play-overlay svg {
             transform: scale(1.1);
-            fill: var(--accent-color); /* Now matches the golden bronze */
+            fill: var(--accent-color); 
         }
 
         /* ========================================
@@ -364,43 +366,6 @@
             color: var(--text-muted);
             line-height: 1.95;
             margin-bottom: 20px;
-        }
-
-        .studio-pillars {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background-color: var(--border-color);
-            margin-top: 50px;
-            border: 1px solid var(--border-color);
-        }
-
-        .pillar-item {
-            background-color: var(--bg-dark);
-            padding: 28px 22px;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .pillar-item:hover {
-            background-color: var(--bg-section);
-        }
-
-        .pillar-num {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            line-height: 1;
-            margin-bottom: 10px;
-            font-weight: 400;
-            color: var(--text-light);
-        }
-
-        .pillar-label {
-            font-size: 0.68rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            line-height: 1.6;
         }
 
         /* — Part 2: Director Profile — */
@@ -536,7 +501,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 10, 6, 0.95); /* Matched to dark theme */
+            background-color: rgba(15, 10, 6, 0.95); 
             backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
@@ -597,70 +562,6 @@
             width: 100%;
             height: 100%;
             border: none;
-        }
-
-        /* ========================================
-        FILMOGRAPHY GRID
-        ======================================== */
-        .filmography {
-            padding: 120px 0;
-            background-color: var(--bg-section);
-        }
-
-        .film-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .film-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-        }
-
-        .film-card img {
-            width: 100%;
-            aspect-ratio: 2/3;
-            object-fit: cover;
-            transition: transform 0.7s ease, filter 0.7s ease;
-            filter: grayscale(80%) sepia(30%) contrast(110%); /* Subtle sepia for vintage grading */
-        }
-
-        .film-card:hover img {
-            transform: scale(1.05);
-            filter: grayscale(0%) sepia(0%) contrast(100%);
-        }
-
-        .film-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 10, 6, 0.95) 0%, rgba(15, 10, 6, 0.3) 50%, rgba(0,0,0,0) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .film-card:hover .film-card-overlay {
-            opacity: 1;
-        }
-
-        .film-card-overlay h4 {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            color: var(--text-light);
-        }
-
-        .film-card-overlay p {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-color);
         }
 
         /* ========================================
@@ -757,7 +658,6 @@
                 text-align: center;
             }
             .featured-poster {
-                max-width: 500px;
                 margin: 0 auto;
             }
             .director-credit {
@@ -825,7 +725,6 @@
                 <a href="#featured">Latest Release</a>
                 <a href="#interviews">Interviews</a>
                 <a href="#about">About</a>          
-                <a href="#films">Filmography</a>
                 <a href="mailto:hrishikeshsangli@gmail.com">Contact</a>
             </nav>
         </div>
@@ -903,21 +802,6 @@
                     <div>
                         <p class="about-body">Agnilochana is an independent production house born from Belagavi — a city rich with cultural heritage yet long underrepresented in regional cinema. We exist to give authentic voice to the stories, dialects, and traditions of Uttar Karnataka.</p>
                         <p class="about-body">Every project is driven not by commerce, but by craft. By a deep conviction that regional stories deserve to be told with cinematic honesty and cultural pride.</p>
-
-                        <div class="studio-pillars">
-                            <div class="pillar-item">
-                                <div class="pillar-num">01</div>
-                                <div class="pillar-label">Feature Film<br>In Production</div>
-                            </div>
-                            <div class="pillar-item">
-                                <div class="pillar-num">B&amp;W</div>
-                                <div class="pillar-label">Visual<br>Signature</div>
-                            </div>
-                            <div class="pillar-item">
-                                <div class="pillar-num">∞</div>
-                                <div class="pillar-label">Stories<br>To Tell</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -967,40 +851,6 @@
                 <cite>— Hrishikesh Sanglikar, Director &nbsp;·&nbsp; Times of India</cite>
             </div>
 
-        </div>
-    </section>
-
-    <section id="films" class="filmography">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Our Films</h2>
-            </div>
-            
-            <div class="film-grid">
-                <div class="film-card reveal delay-1">
-                    <img src="HNJ.jpg" alt="Hinga Nodpa Jeevana">
-                    <div class="film-card-overlay">
-                        <h4>Hinga Nodpa Jeevana</h4>
-                        <p>Feature Film · 2026</p>
-                    </div>
-                </div>
-
-                <div class="film-card reveal delay-2">
-                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=800&auto=format&fit=crop" alt="Upcoming Project">
-                    <div class="film-card-overlay">
-                        <h4>Untitled Project</h4>
-                        <p>In Development</p>
-                    </div>
-                </div>
-
-                <div class="film-card reveal delay-3">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop" alt="Upcoming Project">
-                    <div class="film-card-overlay">
-                        <h4>Untitled Project</h4>
-                        <p>Pre-Production</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
