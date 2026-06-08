@@ -32,6 +32,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-body);
             background-color: var(--bg-dark);
@@ -77,11 +81,6 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        @keyframes cinematicZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-
         /* ========================================
         NAVIGATION
         ======================================== */
@@ -92,12 +91,13 @@
             padding: 30px 0;
             z-index: 1000;
             transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+            background: rgba(5, 5, 5, 0.95); /* Solidified slightly since it starts on content */
+            backdrop-filter: blur(10px);
         }
 
         header.scrolled {
-            background: rgba(5, 5, 5, 0.85);
             padding: 15px 0;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .nav-inner {
@@ -112,12 +112,6 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-        }
-
-        .studio-logo img {
-            height: 40px; 
-            width: auto;
-            display: block;
         }
 
         .nav-links {
@@ -138,35 +132,11 @@
         }
 
         /* ========================================
-        HERO SECTION (Pure Cinematic Background)
-        ======================================== */
-        .hero {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: -5%;
-            background: url('https://images.unsplash.com/photo-1485005934571-70cb8ebf7678?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
-            animation: cinematicZoom 25s infinite alternate ease-in-out;
-            z-index: 1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay since there's no text to read */
-            z-index: 2;
-        }
-
-        /* ========================================
-        FEATURED RELEASE
+        FEATURED RELEASE (Now the Top Section)
         ======================================== */
         .featured-release {
-            padding: 120px 0;
+            /* Added extra top padding so the fixed header doesn't cover the title on load */
+            padding: 180px 0 120px; 
             background-color: var(--bg-dark);
             border-bottom: 1px solid #222;
         }
@@ -274,11 +244,72 @@
         }
 
         /* ========================================
+        CAST INTERVIEWS (YOUTUBE EMBEDS)
+        ======================================== */
+        .interviews-section {
+            padding: 120px 0;
+            background-color: #080808;
+            border-bottom: 1px solid #222;
+        }
+
+        .interview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .interview-card {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.4s ease;
+        }
+
+        .interview-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .interview-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .interview-card:hover img {
+            opacity: 0.6;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+
+        .play-overlay svg {
+            width: 70px;
+            height: 70px;
+            fill: #fff;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .interview-card:hover .play-overlay svg {
+            transform: scale(1.1);
+            fill: #ff0000;
+        }
+
+        /* ========================================
         ABOUT / STUDIO SECTION
         ======================================== */
         .about-section {
             padding: 130px 0;
-            background-color: #080808;
+            background-color: var(--bg-dark);
             border-bottom: 1px solid #222;
         }
 
@@ -310,21 +341,12 @@
             top: 120px;
         }
 
-        .about-heading {
-            font-family: var(--font-heading);
-            font-size: clamp(2.2rem, 3.5vw, 3.6rem);
-            line-height: 1.2;
-            font-weight: 400;
-            margin-bottom: 40px;
-        }
-
         /* NEW LARGE LOGO STYLING */
         .about-crest {
             width: 100%;
             max-width: 320px; /* Big and impactful */
             height: auto;
             display: block;
-            margin-top: 20px;
         }
 
         .about-body {
@@ -427,7 +449,6 @@
 
         .film-specs-grid-about {
             display: grid;
-            /* Balanced auto-fit grid since we removed one item */
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1px;
             background-color: #2a2a2a;
@@ -485,67 +506,6 @@
             text-transform: uppercase;
             color: var(--accent-color);
             font-style: normal;
-        }
-
-        /* ========================================
-        CAST INTERVIEWS (YOUTUBE EMBEDS)
-        ======================================== */
-        .interviews-section {
-            padding: 120px 0;
-            background-color: #080808;
-            border-bottom: 1px solid #222;
-        }
-
-        .interview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .interview-card {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: transform 0.4s ease;
-        }
-
-        .interview-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .interview-card img {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            transition: opacity 0.4s ease;
-        }
-
-        .interview-card:hover img {
-            opacity: 0.6;
-        }
-
-        .play-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.3);
-            pointer-events: none;
-        }
-
-        .play-overlay svg {
-            width: 70px;
-            height: 70px;
-            fill: #fff;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
-        }
-
-        .interview-card:hover .play-overlay svg {
-            transform: scale(1.1);
-            fill: #ff0000;
         }
 
         /* ========================================
@@ -697,13 +657,6 @@
             font-size: 2rem;
             margin-bottom: 30px;
         }
-        
-        .footer-logo img {
-            height: 50px; 
-            width: auto;
-            margin: 0 auto; 
-            display: block;
-        }
 
         .social-links {
             display: flex;
@@ -800,7 +753,7 @@
                 text-align: center;
             }
             .about-crest {
-                margin: 20px auto 0 auto;
+                margin: 0 auto;
             }
             .director-profile-about {
                 grid-template-columns: 1fr;
@@ -812,6 +765,9 @@
             .nav-links {
                 display: none;
             }
+            .featured-release {
+                padding: 130px 0 80px; 
+            }
             .featured-info h3 {
                 font-size: 2.5rem;
             }
@@ -820,7 +776,7 @@
             }
             /* About mobile */
             .about-crest {
-                max-width: 250px;
+                max-width: 220px;
             }
             .film-specs-grid-about {
                 grid-template-columns: repeat(2, 1fr);
@@ -841,9 +797,7 @@
 
     <header id="navbar">
         <div class="container nav-inner">
-            <a href="#" class="studio-logo">
-                <img src="logo.png" alt="Agnilochana Logo">
-            </a>
+            <a href="#" class="studio-logo">Agnilochana</a>
             <nav class="nav-links">
                 <a href="#featured">Latest Release</a>
                 <a href="#interviews">Interviews</a>
@@ -853,10 +807,6 @@
             </nav>
         </div>
     </header>
-
-    <section class="hero">
-        <div class="hero-bg"></div>
-        </section>
 
     <section id="featured" class="featured-release">
         <div class="container">
@@ -925,7 +875,6 @@
                 <span class="about-eyebrow reveal">Est. 2025 · Belagavi, Karnataka</span>
                 <div class="about-split reveal">
                     <div class="about-left-col">
-                        <h2 class="about-heading">Where Culture<br><em>Becomes Cinema.</em></h2>
                         <img src="logo.png" alt="Agnilochana Crest" class="about-crest">
                     </div>
                     <div>
@@ -1034,9 +983,7 @@
 
     <footer id="contact" class="reveal">
         <div class="container">
-            <div class="footer-logo">
-                <img src="logo.png" alt="Agnilochana Logo">
-            </div>
+            <div class="footer-logo">Agnilochana</div>
             
             <div class="social-links">
                 <a href="https://www.instagram.com/hinganodpajeevanamovie" target="_blank">Instagram</a>
@@ -1082,7 +1029,7 @@
             // 2. Sticky Header on Scroll
             const header = document.getElementById("navbar");
             window.addEventListener("scroll", () => {
-                header.classList.toggle("scrolled", window.scrollY > 100);
+                header.classList.toggle("scrolled", window.scrollY > 50);
             });
 
             // 3. YouTube Modal Logic
