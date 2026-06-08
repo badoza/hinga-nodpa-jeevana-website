@@ -12,8 +12,7 @@
     <style>
         /* ========================================
         GLOBAL VARIABLES & RESET
-        ========================================
-        */
+        ======================================== */
         :root {
             --bg-dark: #050505;
             --bg-light: #ffffff;
@@ -60,9 +59,8 @@
         }
 
         /* ========================================
-        ANIMATIONS (Minimalist & Cinematic)
-        ========================================
-        */
+        ANIMATIONS
+        ======================================== */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -86,8 +84,7 @@
 
         /* ========================================
         NAVIGATION
-        ========================================
-        */
+        ======================================== */
         header {
             position: fixed;
             top: 0;
@@ -136,8 +133,7 @@
 
         /* ========================================
         HERO SECTION
-        ========================================
-        */
+        ======================================== */
         .hero {
             height: 100vh;
             display: flex;
@@ -188,8 +184,7 @@
 
         /* ========================================
         FEATURED RELEASE
-        ========================================
-        */
+        ======================================== */
         .featured-release {
             padding: 120px 0;
             background-color: var(--bg-dark);
@@ -299,9 +294,208 @@
         }
 
         /* ========================================
+        ABOUT / STUDIO SECTION  ← NEW
+        ======================================== */
+        .about-section {
+            padding: 130px 0;
+            background-color: #080808;
+            border-bottom: 1px solid #222;
+        }
+
+        .about-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 28px;
+        }
+
+        /* — Part 1: Studio Identity — */
+        .about-intro {
+            margin-bottom: 100px;
+        }
+
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 80px;
+            align-items: start;
+            padding-top: 30px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .about-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+            line-height: 1.2;
+            font-weight: 400;
+            position: sticky;
+            top: 120px;
+        }
+
+        .about-body {
+            font-size: 0.98rem;
+            color: #aaa;
+            line-height: 1.95;
+            margin-bottom: 20px;
+        }
+
+        .studio-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: #2a2a2a;
+            margin-top: 50px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .pillar-item {
+            background-color: #080808;
+            padding: 28px 22px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .pillar-item:hover {
+            background-color: #121212;
+        }
+
+        .pillar-num {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            line-height: 1;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .pillar-label {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            line-height: 1.6;
+        }
+
+        /* — Part 2: Director Profile — */
+        .director-profile-about {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 80px;
+            align-items: start;
+            padding: 80px 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            margin-bottom: 80px;
+        }
+
+        .director-label .about-eyebrow {
+            margin-bottom: 15px;
+        }
+
+        .director-name-about {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.25;
+        }
+
+        .director-bio-text p {
+            font-size: 0.98rem;
+            color: #aaa;
+            line-height: 1.95;
+            margin-bottom: 18px;
+        }
+
+        .director-bio-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* — Part 3: Film Specs — */
+        .film-specs-about {
+            margin-bottom: 80px;
+        }
+
+        .film-specs-header {
+            margin-bottom: 35px;
+        }
+
+        .film-specs-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+            font-weight: 400;
+            margin-top: 8px;
+        }
+
+        .film-specs-title span {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        .film-specs-grid-about {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1px;
+            background-color: #2a2a2a;
+            border: 1px solid #2a2a2a;
+        }
+
+        .spec-card {
+            background-color: #080808;
+            padding: 28px 15px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .spec-card:hover {
+            background-color: #121212;
+        }
+
+        .spec-val {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .spec-key {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        /* — Part 4: Director Quote — */
+        .director-quote {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 0 0;
+            border-top: 1px solid #222;
+        }
+
+        .director-quote blockquote {
+            font-family: var(--font-heading);
+            font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+            font-style: italic;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .director-quote cite {
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            font-style: normal;
+        }
+
+        /* ========================================
         CAST INTERVIEWS (YOUTUBE EMBEDS)
-        ========================================
-        */
+        ======================================== */
         .interviews-section {
             padding: 120px 0;
             background-color: #080808;
@@ -357,45 +551,54 @@
 
         .interview-card:hover .play-overlay svg {
             transform: scale(1.1);
-            fill: #ff0000; /* YouTube Red */
+            fill: #ff0000;
         }
 
         /* ========================================
-        VIDEO MODAL (LIGHTBOX)
-        ========================================
-        */
+        VIDEO MODAL — FIXED  ← CHANGED
+        ======================================== */
         .video-modal {
-            display: none;
+            /* visibility + opacity instead of display:none
+               so the fade transition works correctly on both open AND close */
             position: fixed;
             z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(6px);
+            display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
         }
 
         .video-modal.show {
-            display: flex;
             opacity: 1;
+            visibility: visible;
         }
 
         .modal-content {
             position: relative;
             width: 90%;
-            max-width: 1000px;
+            max-width: 760px; /* ← Reduced from 1000px → YouTube-like size */
             background: #000;
-            box-shadow: 0 0 40px rgba(0,0,0,0.9);
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.95);
+            /* Scale-in pop on open */
+            transform: scale(0.94);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .video-modal.show .modal-content {
+            transform: scale(1);
         }
 
         .close-modal {
             position: absolute;
-            top: -45px;
+            top: -48px;
             right: 0;
             color: #fff;
             font-size: 40px;
@@ -403,6 +606,7 @@
             cursor: pointer;
             transition: color 0.3s;
             line-height: 1;
+            user-select: none;
         }
 
         .close-modal:hover {
@@ -427,8 +631,7 @@
 
         /* ========================================
         FILMOGRAPHY GRID
-        ========================================
-        */
+        ======================================== */
         .filmography {
             padding: 120px 0;
             background-color: #0a0a0a;
@@ -490,8 +693,7 @@
 
         /* ========================================
         FOOTER & AGENCY CREDIT
-        ========================================
-        */
+        ======================================== */
         footer {
             padding: 80px 0 40px;
             text-align: center;
@@ -573,9 +775,9 @@
 
         /* ========================================
         RESPONSIVE DESIGN
-        ========================================
-        */
+        ======================================== */
         @media (max-width: 992px) {
+            /* Featured */
             .featured-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -590,11 +792,26 @@
             .btn-group {
                 justify-content: center;
             }
+            /* About */
+            .about-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-heading {
+                position: static; /* disable sticky on tablet/mobile */
+            }
+            .director-profile-about {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .film-specs-grid-about {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; 
+                display: none;
             }
             .hero-title {
                 font-size: 2.5rem;
@@ -605,16 +822,31 @@
             .btn-group {
                 flex-direction: column;
             }
+            /* About mobile */
+            .film-specs-grid-about {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .director-profile-about {
+                padding: 50px 0;
+            }
+            .about-section {
+                padding: 80px 0;
+            }
+            .about-intro {
+                margin-bottom: 60px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ====== NAVIGATION ====== -->
     <header id="navbar">
         <div class="container nav-inner">
             <a href="#" class="studio-logo">Agnilochana</a>
             <nav class="nav-links">
                 <a href="#featured">Latest Release</a>
+                <a href="#about">About</a>          <!-- NEW LINK -->
                 <a href="#interviews">Interviews</a>
                 <a href="#films">Filmography</a>
                 <a href="mailto:hrishikeshsangli@gmail.com">Contact</a>
@@ -622,6 +854,7 @@
         </div>
     </header>
 
+    <!-- ====== HERO ====== -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content reveal active">
@@ -630,6 +863,7 @@
         </div>
     </section>
 
+    <!-- ====== FEATURED RELEASE ====== -->
     <section id="featured" class="featured-release">
         <div class="container">
             <div class="section-header reveal">
@@ -659,6 +893,100 @@
         </div>
     </section>
 
+    <!-- ====================================================
+         ABOUT / STUDIO SECTION  ← NEW SECTION
+    ===================================================== -->
+    <section id="about" class="about-section">
+        <div class="container">
+
+            <!-- 1. Studio Identity -->
+            <div class="about-intro">
+                <span class="about-eyebrow reveal">Est. 2025 · Belagavi, Karnataka</span>
+                <div class="about-split reveal">
+                    <div>
+                        <h2 class="about-heading">Where Culture<br><em>Becomes Cinema.</em></h2>
+                    </div>
+                    <div>
+                        <p class="about-body">Agnilochana is an independent production house born from Belagavi — a city rich with cultural heritage yet long underrepresented in regional cinema. We exist to give authentic voice to the stories, dialects, and traditions of Uttar Karnataka.</p>
+                        <p class="about-body">Every project is driven not by commerce, but by craft. By a deep conviction that regional stories deserve to be told with cinematic honesty and cultural pride.</p>
+
+                        <div class="studio-pillars">
+                            <div class="pillar-item">
+                                <div class="pillar-num">01</div>
+                                <div class="pillar-label">Feature Film<br>In Production</div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-num">B&amp;W</div>
+                                <div class="pillar-label">Visual<br>Signature</div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-num">∞</div>
+                                <div class="pillar-label">Stories<br>To Tell</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Director Profile -->
+            <div class="director-profile-about reveal">
+                <div class="director-label">
+                    <span class="about-eyebrow">Founder &amp; Director</span>
+                    <h3 class="director-name-about">Hrishikesh<br>Sangalikar</h3>
+                </div>
+                <div class="director-bio-text">
+                    <p>A filmmaker rooted in Belagavi, Hrishikesh Sangalikar brings a distinctive cinematic vision shaped by the cultural landscape of Uttar Karnataka. His debut feature, <em>Hinga Nodpa Jeevana</em>, marks a historic milestone as Belagavi's first independently produced feature film — shot entirely in Black &amp; White as both an artistic and cultural statement.</p>
+                    <p>His approach to filmmaking is defined by authenticity: using the local Kannada dialect, incorporating Javari folk music, and working with a team that understands the emotional depth of the region's stories. His vision is not to imitate mainstream cinema, but to carve a new cinematic language — one rooted in the soil of Uttar Karnataka.</p>
+                </div>
+            </div>
+
+            <!-- 3. Current Film Specs -->
+            <div class="film-specs-about reveal">
+                <div class="film-specs-header">
+                    <span class="about-eyebrow">Current Project</span>
+                    <h3 class="film-specs-title">ಹಿಂಗ ನೋಡಪಾ ಜೀವನಾ &nbsp;<span>/ Hinga Nodpa Jeevana</span></h3>
+                </div>
+                <div class="film-specs-grid-about">
+                    <div class="spec-card">
+                        <div class="spec-val">Feature Film</div>
+                        <div class="spec-key">Format</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Black &amp; White</div>
+                        <div class="spec-key">Visual Aesthetic</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Kannada</div>
+                        <div class="spec-key">Language</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Post-Production</div>
+                        <div class="spec-key">Current Status</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Belagavi #1</div>
+                        <div class="spec-key">Historic First</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Javari</div>
+                        <div class="spec-key">Original Music</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Director Quote (from Times of India) -->
+            <div class="director-quote reveal">
+                <blockquote>"Our limitations while shooting in black and white turned into art."</blockquote>
+                <cite>— Hrishikesh Sangalikar, Director &nbsp;·&nbsp; Times of India</cite>
+            </div>
+
+        </div>
+    </section>
+    <!-- ====================================================
+         END ABOUT SECTION
+    ===================================================== -->
+
+    <!-- ====== CAST INTERVIEWS ====== -->
     <section id="interviews" class="interviews-section">
         <div class="container">
             <div class="section-header reveal">
@@ -690,6 +1018,7 @@
         </div>
     </section>
 
+    <!-- ====== FILMOGRAPHY ====== -->
     <section id="films" class="filmography">
         <div class="container">
             <div class="section-header reveal">
@@ -701,7 +1030,7 @@
                     <img src="HNJ.jpg" alt="Hinga Nodpa Jeevana">
                     <div class="film-card-overlay">
                         <h4>Hinga Nodpa Jeevana</h4>
-                        <p>Feature Film • 2026</p>
+                        <p>Feature Film · 2026</p>
                     </div>
                 </div>
 
@@ -724,6 +1053,7 @@
         </div>
     </section>
 
+    <!-- ====== FOOTER ====== -->
     <footer id="contact" class="reveal">
         <div class="container">
             <div class="footer-logo">Agnilochana</div>
@@ -744,6 +1074,7 @@
         </div>
     </footer>
 
+    <!-- ====== VIDEO MODAL ====== -->
     <div id="youtubeModal" class="video-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -755,67 +1086,58 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+
             // 1. Scroll-Triggered Reveal Animation
             const reveals = document.querySelectorAll(".reveal");
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            const revealObserver = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("active");
                         observer.unobserve(entry.target);
                     }
                 });
-            }, revealOptions);
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-            reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
-            });
+            reveals.forEach(reveal => revealObserver.observe(reveal));
 
-            // 2. Sticky Header Scroll Effect
+            // 2. Sticky Header on Scroll
             const header = document.getElementById("navbar");
             window.addEventListener("scroll", () => {
-                if (window.scrollY > 100) {
-                    header.classList.add("scrolled");
-                } else {
-                    header.classList.remove("scrolled");
-                }
+                header.classList.toggle("scrolled", window.scrollY > 100);
             });
 
-            // 3. YouTube Modal Logic
-            const modal = document.getElementById("youtubeModal");
+            // 3. YouTube Modal Logic (fixed)
+            const modal  = document.getElementById("youtubeModal");
             const iframe = document.getElementById("youtubeIframe");
             const closeBtn = document.querySelector(".close-modal");
-            const interviewCards = document.querySelectorAll(".interview-card");
 
-            // Open modal and auto-play when a card is clicked
-            interviewCards.forEach(card => {
+            // Open — set src with autoplay and reveal modal
+            document.querySelectorAll(".interview-card").forEach(card => {
                 card.addEventListener("click", () => {
                     const videoId = card.getAttribute("data-video-id");
-                    // Append ?autoplay=1 so it starts immediately
                     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
                     modal.classList.add("show");
+                    document.body.style.overflow = "hidden"; // prevent bg scroll
                 });
             });
 
-            // Function to close modal and stop video
+            // Close — fade out, then clear src to stop playback
             const closeModal = () => {
                 modal.classList.remove("show");
-                setTimeout(() => {
-                    iframe.src = ""; // Clear src to stop audio/video playing in background
-                }, 300); // Wait for transition
+                document.body.style.overflow = "";
+                setTimeout(() => { iframe.src = ""; }, 350); // match transition duration
             };
 
             closeBtn.addEventListener("click", closeModal);
 
-            // Close if user clicks anywhere outside the video
-            window.addEventListener("click", (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
+            // Close on backdrop click
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Close on Escape key
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
             });
         });
     </script>
