@@ -114,6 +114,12 @@
             text-transform: uppercase;
         }
 
+        .studio-logo img {
+            height: 40px; 
+            width: auto;
+            display: block;
+        }
+
         .nav-links {
             display: flex;
             gap: 40px;
@@ -132,15 +138,11 @@
         }
 
         /* ========================================
-        HERO SECTION
+        HERO SECTION (Pure Cinematic Background)
         ======================================== */
         .hero {
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
-            text-align: center;
             overflow: hidden;
         }
 
@@ -156,39 +158,8 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay since there's no text to read */
             z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        /* THE HERO CREST LOGO */
-        .hero-crest {
-            width: 180px; 
-            height: auto;
-            margin: 0 auto 30px auto; 
-            display: block;
-            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8)); 
-        }
-
-        .hero-subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-        }
-
-        .hero-title {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            line-height: 1.1;
-            margin-bottom: 30px;
         }
 
         /* ========================================
@@ -320,7 +291,7 @@
             margin-bottom: 28px;
         }
 
-        /* — Part 1: Studio Identity — */
+        /* — Part 1: Studio Identity & Logo — */
         .about-intro {
             margin-bottom: 100px;
         }
@@ -334,13 +305,26 @@
             border-top: 1px solid #2a2a2a;
         }
 
+        .about-left-col {
+            position: sticky;
+            top: 120px;
+        }
+
         .about-heading {
             font-family: var(--font-heading);
             font-size: clamp(2.2rem, 3.5vw, 3.6rem);
             line-height: 1.2;
             font-weight: 400;
-            position: sticky;
-            top: 120px;
+            margin-bottom: 40px;
+        }
+
+        /* NEW LARGE LOGO STYLING */
+        .about-crest {
+            width: 100%;
+            max-width: 320px; /* Big and impactful */
+            height: auto;
+            display: block;
+            margin-top: 20px;
         }
 
         .about-body {
@@ -443,7 +427,8 @@
 
         .film-specs-grid-about {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            /* Balanced auto-fit grid since we removed one item */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1px;
             background-color: #2a2a2a;
             border: 1px solid #2a2a2a;
@@ -564,7 +549,7 @@
         }
 
         /* ========================================
-        VIDEO MODAL — FIXED
+        VIDEO MODAL
         ======================================== */
         .video-modal {
             position: fixed;
@@ -712,6 +697,13 @@
             font-size: 2rem;
             margin-bottom: 30px;
         }
+        
+        .footer-logo img {
+            height: 50px; 
+            width: auto;
+            margin: 0 auto; 
+            display: block;
+        }
 
         .social-links {
             display: flex;
@@ -803,29 +795,22 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            .about-heading {
+            .about-left-col {
                 position: static; 
+                text-align: center;
+            }
+            .about-crest {
+                margin: 20px auto 0 auto;
             }
             .director-profile-about {
                 grid-template-columns: 1fr;
                 gap: 30px;
-            }
-            .film-specs-grid-about {
-                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-            }
-            /* Responsive Hero Logo */
-            .hero-crest {
-                width: 130px;
-                margin-bottom: 20px;
-            }
-            .hero-title {
-                font-size: 2.5rem;
             }
             .featured-info h3 {
                 font-size: 2.5rem;
@@ -834,6 +819,9 @@
                 flex-direction: column;
             }
             /* About mobile */
+            .about-crest {
+                max-width: 250px;
+            }
             .film-specs-grid-about {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -853,11 +841,13 @@
 
     <header id="navbar">
         <div class="container nav-inner">
-            <a href="#" class="studio-logo">Agnilochana</a>
+            <a href="#" class="studio-logo">
+                <img src="logo.png" alt="Agnilochana Logo">
+            </a>
             <nav class="nav-links">
                 <a href="#featured">Latest Release</a>
-                <a href="#about">About</a>          
                 <a href="#interviews">Interviews</a>
+                <a href="#about">About</a>          
                 <a href="#films">Filmography</a>
                 <a href="mailto:hrishikeshsangli@gmail.com">Contact</a>
             </nav>
@@ -866,13 +856,7 @@
 
     <section class="hero">
         <div class="hero-bg"></div>
-        <div class="hero-content reveal active">
-            <img src="logo.png" alt="Agnilochana Crest" class="hero-crest">
-            
-            <div class="hero-subtitle">Independent Cinema from Belagavi</div>
-            <h1 class="hero-title">Crafting Authentic Stories. Rooted in Culture.</h1>
-        </div>
-    </section>
+        </section>
 
     <section id="featured" class="featured-release">
         <div class="container">
@@ -888,10 +872,10 @@
                 <div class="featured-info reveal delay-1">
                     <h2 class="kannada-title">ಹಿಂಗ ನೋಡಪಾ ಜೀವನಾ</h2>
                     <h3>Hinga Nodpa Jeevana</h3>
-                    <div class="director-credit">Directed by Hrishikesh Sangalikar</div>
+                    <div class="director-credit">Directed by Hrishikesh Sanglikar</div>
                     
                     <p class="featured-desc">
-                        Marking a significant milestone as <strong>Belagavi's first independent feature film</strong>, this cinematic piece is a passionate tribute to regional storytelling. Shot entirely in a stark Black and White aesthetic, the film offers a classic cinematic experience that captures the raw essence, dialect, and Javari music of Uttar Karnataka.
+                        Marking a significant milestone as <strong>Belagavi's first independent feature film</strong>, this cinematic piece is a passionate tribute to regional storytelling. Shot entirely in a stark Black and White aesthetic, the film offers a classic cinematic experience that captures the raw essence, dialect, and music of Uttar Karnataka.
                     </p>
                     
                     <div class="btn-group">
@@ -900,89 +884,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="about" class="about-section">
-        <div class="container">
-
-            <div class="about-intro">
-                <span class="about-eyebrow reveal">Est. 2025 · Belagavi, Karnataka</span>
-                <div class="about-split reveal">
-                    <div>
-                        <h2 class="about-heading">Where Culture<br><em>Becomes Cinema.</em></h2>
-                    </div>
-                    <div>
-                        <p class="about-body">Agnilochana is an independent production house born from Belagavi — a city rich with cultural heritage yet long underrepresented in regional cinema. We exist to give authentic voice to the stories, dialects, and traditions of Uttar Karnataka.</p>
-                        <p class="about-body">Every project is driven not by commerce, but by craft. By a deep conviction that regional stories deserve to be told with cinematic honesty and cultural pride.</p>
-
-                        <div class="studio-pillars">
-                            <div class="pillar-item">
-                                <div class="pillar-num">01</div>
-                                <div class="pillar-label">Feature Film<br>In Production</div>
-                            </div>
-                            <div class="pillar-item">
-                                <div class="pillar-num">B&amp;W</div>
-                                <div class="pillar-label">Visual<br>Signature</div>
-                            </div>
-                            <div class="pillar-item">
-                                <div class="pillar-num">∞</div>
-                                <div class="pillar-label">Stories<br>To Tell</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="director-profile-about reveal">
-                <div class="director-label">
-                    <span class="about-eyebrow">Founder &amp; Director</span>
-                    <h3 class="director-name-about">Hrishikesh<br>Sangalikar</h3>
-                </div>
-                <div class="director-bio-text">
-                    <p>A filmmaker rooted in Belagavi, Hrishikesh Sangalikar brings a distinctive cinematic vision shaped by the cultural landscape of Uttar Karnataka. His debut feature, <em>Hinga Nodpa Jeevana</em>, marks a historic milestone as Belagavi's first independently produced feature film — shot entirely in Black &amp; White as both an artistic and cultural statement.</p>
-                    <p>His approach to filmmaking is defined by authenticity: using the local Kannada dialect, incorporating Javari folk music, and working with a team that understands the emotional depth of the region's stories. His vision is not to imitate mainstream cinema, but to carve a new cinematic language — one rooted in the soil of Uttar Karnataka.</p>
-                </div>
-            </div>
-
-            <div class="film-specs-about reveal">
-                <div class="film-specs-header">
-                    <span class="about-eyebrow">Current Project</span>
-                    <h3 class="film-specs-title">ಹಿಂಗ ನೋಡಪಾ ಜೀವನಾ &nbsp;<span>/ Hinga Nodpa Jeevana</span></h3>
-                </div>
-                <div class="film-specs-grid-about">
-                    <div class="spec-card">
-                        <div class="spec-val">Feature Film</div>
-                        <div class="spec-key">Format</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-val">Black &amp; White</div>
-                        <div class="spec-key">Visual Aesthetic</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-val">Kannada</div>
-                        <div class="spec-key">Language</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-val">Post-Production</div>
-                        <div class="spec-key">Current Status</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-val">Belagavi #1</div>
-                        <div class="spec-key">Historic First</div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-val">Javari</div>
-                        <div class="spec-key">Original Music</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="director-quote reveal">
-                <blockquote>"Our limitations while shooting in black and white turned into art."</blockquote>
-                <cite>— Hrishikesh Sangalikar, Director &nbsp;·&nbsp; Times of India</cite>
-            </div>
-
         </div>
     </section>
 
@@ -1014,6 +915,86 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+
+            <div class="about-intro">
+                <span class="about-eyebrow reveal">Est. 2025 · Belagavi, Karnataka</span>
+                <div class="about-split reveal">
+                    <div class="about-left-col">
+                        <h2 class="about-heading">Where Culture<br><em>Becomes Cinema.</em></h2>
+                        <img src="logo.png" alt="Agnilochana Crest" class="about-crest">
+                    </div>
+                    <div>
+                        <p class="about-body">Agnilochana is an independent production house born from Belagavi — a city rich with cultural heritage yet long underrepresented in regional cinema. We exist to give authentic voice to the stories, dialects, and traditions of Uttar Karnataka.</p>
+                        <p class="about-body">Every project is driven not by commerce, but by craft. By a deep conviction that regional stories deserve to be told with cinematic honesty and cultural pride.</p>
+
+                        <div class="studio-pillars">
+                            <div class="pillar-item">
+                                <div class="pillar-num">01</div>
+                                <div class="pillar-label">Feature Film<br>In Production</div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-num">B&amp;W</div>
+                                <div class="pillar-label">Visual<br>Signature</div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-num">∞</div>
+                                <div class="pillar-label">Stories<br>To Tell</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="director-profile-about reveal">
+                <div class="director-label">
+                    <span class="about-eyebrow">Founder &amp; Director</span>
+                    <h3 class="director-name-about">Hrishikesh<br>Sanglikar</h3>
+                </div>
+                <div class="director-bio-text">
+                    <p>A filmmaker rooted in Belagavi, Hrishikesh Sanglikar brings a distinctive cinematic vision shaped by the cultural landscape of Uttar Karnataka. His debut feature, <em>Hinga Nodpa Jeevana</em>, marks a historic milestone as Belagavi's first independently produced feature film — shot entirely in Black &amp; White as both an artistic and cultural statement.</p>
+                    <p>His approach to filmmaking is defined by authenticity: using the local Kannada dialect, incorporating folk music, and working with a team that understands the emotional depth of the region's stories. His vision is not to imitate mainstream cinema, but to carve a new cinematic language — one rooted in the soil of Uttar Karnataka.</p>
+                </div>
+            </div>
+
+            <div class="film-specs-about reveal">
+                <div class="film-specs-header">
+                    <span class="about-eyebrow">Current Project</span>
+                    <h3 class="film-specs-title">ಹಿಂಗ ನೋಡಪಾ ಜೀವನಾ &nbsp;<span>/ Hinga Nodpa Jeevana</span></h3>
+                </div>
+                <div class="film-specs-grid-about">
+                    <div class="spec-card">
+                        <div class="spec-val">Feature Film</div>
+                        <div class="spec-key">Format</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Black &amp; White</div>
+                        <div class="spec-key">Visual Aesthetic</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Kannada</div>
+                        <div class="spec-key">Language</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Post-Production</div>
+                        <div class="spec-key">Current Status</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-val">Belagavi #1</div>
+                        <div class="spec-key">Historic First</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="director-quote reveal">
+                <blockquote>"Our limitations while shooting in black and white turned into art."</blockquote>
+                <cite>— Hrishikesh Sanglikar, Director &nbsp;·&nbsp; Times of India</cite>
+            </div>
+
         </div>
     </section>
 
@@ -1053,7 +1034,9 @@
 
     <footer id="contact" class="reveal">
         <div class="container">
-            <div class="footer-logo">Agnilochana</div>
+            <div class="footer-logo">
+                <img src="logo.png" alt="Agnilochana Logo">
+            </div>
             
             <div class="social-links">
                 <a href="https://www.instagram.com/hinganodpajeevanamovie" target="_blank">Instagram</a>
@@ -1102,7 +1085,7 @@
                 header.classList.toggle("scrolled", window.scrollY > 100);
             });
 
-            // 3. YouTube Modal Logic (fixed)
+            // 3. YouTube Modal Logic
             const modal  = document.getElementById("youtubeModal");
             const iframe = document.getElementById("youtubeIframe");
             const closeBtn = document.querySelector(".close-modal");
