@@ -11,14 +11,16 @@
     
     <style>
         /* ========================================
-        GLOBAL VARIABLES & RESET
+        GLOBAL VARIABLES & LOGO COLOR GRADING
         ======================================== */
         :root {
-            --bg-dark: #050505;
-            --bg-light: #ffffff;
-            --text-light: #f4f4f4;
-            --text-dark: #111111;
-            --accent-color: #8c8c8c;
+            --bg-dark: #0f0a06; /* Deepest chocolate brown/black */
+            --bg-section: #1a110a; /* Slightly lighter warm brown for contrast */
+            --text-light: #f4e8d1; /* Cream text from the logo banner */
+            --text-muted: #c2ab91; /* Muted tawny/tan text for paragraphs */
+            --text-dark: #2b170b; /* Dark brown for inverted text/buttons */
+            --accent-color: #d49a44; /* Golden bronze from the crown/eyes */
+            --border-color: #3e2312; /* Rich brown borders */
             
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
@@ -91,13 +93,14 @@
             padding: 30px 0;
             z-index: 1000;
             transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
-            background: rgba(5, 5, 5, 0.95); /* Solidified slightly since it starts on content */
+            background: rgba(15, 10, 6, 0.95); /* Deep brown transparent */
             backdrop-filter: blur(10px);
         }
 
         header.scrolled {
             padding: 15px 0;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .nav-inner {
@@ -112,6 +115,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+            color: var(--accent-color); /* Applied golden bronze to text logo */
         }
 
         .nav-links {
@@ -124,6 +128,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
+            color: var(--text-light);
             transition: color 0.3s ease;
         }
 
@@ -132,13 +137,12 @@
         }
 
         /* ========================================
-        FEATURED RELEASE (Now the Top Section)
+        FEATURED RELEASE (Top Section)
         ======================================== */
         .featured-release {
-            /* Added extra top padding so the fixed header doesn't cover the title on load */
             padding: 180px 0 120px; 
             background-color: var(--bg-dark);
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .section-header {
@@ -151,6 +155,7 @@
             font-size: 2.5rem;
             font-weight: 400;
             letter-spacing: 1px;
+            color: var(--text-light);
         }
 
         .featured-grid {
@@ -163,7 +168,7 @@
         .featured-poster {
             position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border: 1px solid #333;
+            border: 1px solid var(--border-color);
             overflow: hidden;
         }
 
@@ -198,12 +203,17 @@
             display: inline-block;
             border-bottom: 1px solid var(--accent-color);
             padding-bottom: 5px;
+            color: var(--text-light);
         }
 
         .featured-desc {
             font-size: 1.1rem;
-            color: #ccc;
+            color: var(--text-muted);
             margin-bottom: 30px;
+        }
+
+        .featured-desc strong {
+            color: var(--text-light);
         }
 
         .btn-group {
@@ -220,22 +230,23 @@
             font-weight: 600;
             transition: var(--transition-smooth);
             cursor: pointer;
-            border: 1px solid var(--text-light);
         }
 
         .btn-primary {
-            background-color: var(--text-light);
+            background-color: var(--accent-color);
             color: var(--text-dark);
+            border: 1px solid var(--accent-color);
         }
 
         .btn-primary:hover {
             background-color: transparent;
-            color: var(--text-light);
+            color: var(--accent-color);
         }
 
         .btn-outline {
             background-color: transparent;
             color: var(--text-light);
+            border: 1px solid var(--text-light);
         }
 
         .btn-outline:hover {
@@ -248,8 +259,8 @@
         ======================================== */
         .interviews-section {
             padding: 120px 0;
-            background-color: #080808;
-            border-bottom: 1px solid #222;
+            background-color: var(--bg-section);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .interview-grid {
@@ -262,7 +273,7 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
-            border: 1px solid #333;
+            border: 1px solid var(--border-color);
             transition: transform 0.4s ease;
         }
 
@@ -287,21 +298,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0,0,0,0.3);
+            background: rgba(15, 10, 6, 0.4);
             pointer-events: none;
         }
 
         .play-overlay svg {
             width: 70px;
             height: 70px;
-            fill: #fff;
+            fill: var(--text-light);
             transition: all 0.3s ease;
             filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
         }
 
         .interview-card:hover .play-overlay svg {
             transform: scale(1.1);
-            fill: #ff0000;
+            fill: var(--accent-color); /* Now matches the golden bronze */
         }
 
         /* ========================================
@@ -310,7 +321,7 @@
         .about-section {
             padding: 130px 0;
             background-color: var(--bg-dark);
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .about-eyebrow {
@@ -333,7 +344,7 @@
             gap: 80px;
             align-items: start;
             padding-top: 30px;
-            border-top: 1px solid #2a2a2a;
+            border-top: 1px solid var(--border-color);
         }
 
         .about-left-col {
@@ -341,17 +352,16 @@
             top: 120px;
         }
 
-        /* NEW LARGE LOGO STYLING */
         .about-crest {
             width: 100%;
-            max-width: 320px; /* Big and impactful */
+            max-width: 320px; 
             height: auto;
             display: block;
         }
 
         .about-body {
             font-size: 0.98rem;
-            color: #aaa;
+            color: var(--text-muted);
             line-height: 1.95;
             margin-bottom: 20px;
         }
@@ -360,20 +370,20 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1px;
-            background-color: #2a2a2a;
+            background-color: var(--border-color);
             margin-top: 50px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid var(--border-color);
         }
 
         .pillar-item {
-            background-color: #080808;
+            background-color: var(--bg-dark);
             padding: 28px 22px;
             text-align: center;
             transition: background-color 0.3s ease;
         }
 
         .pillar-item:hover {
-            background-color: #121212;
+            background-color: var(--bg-section);
         }
 
         .pillar-num {
@@ -382,6 +392,7 @@
             line-height: 1;
             margin-bottom: 10px;
             font-weight: 400;
+            color: var(--text-light);
         }
 
         .pillar-label {
@@ -399,8 +410,8 @@
             gap: 80px;
             align-items: start;
             padding: 80px 0;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             margin-bottom: 80px;
         }
 
@@ -413,17 +424,22 @@
             font-size: 2rem;
             font-weight: 400;
             line-height: 1.25;
+            color: var(--text-light);
         }
 
         .director-bio-text p {
             font-size: 0.98rem;
-            color: #aaa;
+            color: var(--text-muted);
             line-height: 1.95;
             margin-bottom: 18px;
         }
 
         .director-bio-text p:last-child {
             margin-bottom: 0;
+        }
+
+        .director-bio-text em {
+            color: var(--text-light);
         }
 
         /* — Part 3: Film Specs — */
@@ -440,6 +456,7 @@
             font-size: clamp(1.5rem, 2.5vw, 2.1rem);
             font-weight: 400;
             margin-top: 8px;
+            color: var(--text-light);
         }
 
         .film-specs-title span {
@@ -451,19 +468,19 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1px;
-            background-color: #2a2a2a;
-            border: 1px solid #2a2a2a;
+            background-color: var(--border-color);
+            border: 1px solid var(--border-color);
         }
 
         .spec-card {
-            background-color: #080808;
+            background-color: var(--bg-dark);
             padding: 28px 15px;
             text-align: center;
             transition: background-color 0.3s ease;
         }
 
         .spec-card:hover {
-            background-color: #121212;
+            background-color: var(--bg-section);
         }
 
         .spec-val {
@@ -472,6 +489,7 @@
             margin-bottom: 8px;
             font-weight: 400;
             line-height: 1.3;
+            color: var(--text-light);
         }
 
         .spec-key {
@@ -487,7 +505,7 @@
             max-width: 780px;
             margin: 0 auto;
             padding: 60px 0 0;
-            border-top: 1px solid #222;
+            border-top: 1px solid var(--border-color);
         }
 
         .director-quote blockquote {
@@ -495,7 +513,7 @@
             font-size: clamp(1.2rem, 2.2vw, 1.75rem);
             font-style: italic;
             line-height: 1.7;
-            color: #e0e0e0;
+            color: var(--text-light);
             margin-bottom: 25px;
             font-weight: 400;
         }
@@ -518,7 +536,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.88);
+            background-color: rgba(15, 10, 6, 0.95); /* Matched to dark theme */
             backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
@@ -541,6 +559,7 @@
             box-shadow: 0 0 80px rgba(0, 0, 0, 0.95);
             transform: scale(0.94);
             transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--border-color);
         }
 
         .video-modal.show .modal-content {
@@ -551,7 +570,7 @@
             position: absolute;
             top: -48px;
             right: 0;
-            color: #fff;
+            color: var(--text-light);
             font-size: 40px;
             font-weight: 300;
             cursor: pointer;
@@ -585,7 +604,7 @@
         ======================================== */
         .filmography {
             padding: 120px 0;
-            background-color: #0a0a0a;
+            background-color: var(--bg-section);
         }
 
         .film-grid {
@@ -598,6 +617,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            border: 1px solid var(--border-color);
         }
 
         .film-card img {
@@ -605,18 +625,18 @@
             aspect-ratio: 2/3;
             object-fit: cover;
             transition: transform 0.7s ease, filter 0.7s ease;
-            filter: grayscale(80%) contrast(120%);
+            filter: grayscale(80%) sepia(30%) contrast(110%); /* Subtle sepia for vintage grading */
         }
 
         .film-card:hover img {
             transform: scale(1.05);
-            filter: grayscale(0%) contrast(100%);
+            filter: grayscale(0%) sepia(0%) contrast(100%);
         }
 
         .film-card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(15, 10, 6, 0.95) 0%, rgba(15, 10, 6, 0.3) 50%, rgba(0,0,0,0) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -633,6 +653,7 @@
             font-family: var(--font-heading);
             font-size: 1.8rem;
             margin-bottom: 5px;
+            color: var(--text-light);
         }
 
         .film-card-overlay p {
@@ -649,13 +670,14 @@
             padding: 80px 0 40px;
             text-align: center;
             background-color: var(--bg-dark);
-            border-top: 1px solid #222;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-logo {
             font-family: var(--font-heading);
             font-size: 2rem;
             margin-bottom: 30px;
+            color: var(--accent-color);
         }
 
         .social-links {
@@ -670,6 +692,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--accent-color);
+            transition: color 0.3s ease;
         }
 
         .social-links a:hover {
@@ -678,7 +701,7 @@
 
         .copyright {
             font-size: 0.8rem;
-            color: #666;
+            color: var(--text-muted);
             margin-bottom: 10px;
         }
 
@@ -687,7 +710,7 @@
             font-size: 0.75rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: #555;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -695,7 +718,7 @@
         }
         
         .agency-credit a {
-            color: #b3b3b3;
+            color: var(--accent-color);
             font-weight: 600;
             transition: color 0.3s ease;
             position: relative;
@@ -708,20 +731,20 @@
             height: 1px;
             bottom: -2px;
             left: 0;
-            background-color: #b3b3b3;
+            background-color: var(--accent-color);
             transform: scaleX(0);
             transform-origin: bottom right;
             transition: transform 0.3s ease;
         }
 
         .agency-credit a:hover {
-            color: #fff;
+            color: var(--text-light);
         }
 
         .agency-credit a:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
-            background-color: #fff;
+            background-color: var(--text-light);
         }
 
         /* ========================================
